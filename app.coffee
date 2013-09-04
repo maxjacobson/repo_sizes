@@ -12,5 +12,13 @@ d3.select("body")
     else
       "#{num} is less than or equal to ten"
   .style "color", (d) ->
-    if d > 15 then "red" else "black"
+    if d > 10 then "red" else "black"
+
+d3.select("body")
+  .selectAll("div")
+  .data(dataset)
+  .enter()
+  .append("div")
+  .attr("class", "bar")
+  .style "height", (d) -> "#{parseInt d}px"
 

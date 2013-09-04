@@ -13,11 +13,15 @@
       return "" + num + " is less than or equal to ten";
     }
   }).style("color", function(d) {
-    if (d > 15) {
+    if (d > 10) {
       return "red";
     } else {
       return "black";
     }
+  });
+
+  d3.select("body").selectAll("div").data(dataset).enter().append("div").attr("class", "bar").style("height", function(d) {
+    return "" + (parseInt(d)) + "px";
   });
 
 }).call(this);
