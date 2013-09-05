@@ -8,29 +8,30 @@ $ ->
           .append("svg")
           .attr("height", h)
           .attr("width", w)
-          .attr("fill", "red")
   $github_username = $(".github_username")
   $github_username_input = $github_username.find("input")
-  dataset = []
   $github_username.on "submit", (event) ->
     event.preventDefault()
     username = $github_username_input.val()
     $github_username_input.val ""
-    url = "https://api.github.com/users/#{username}/repos"
     $.ajax
-      url: url
+      url: "https://api.github.com/users/#{username}/repos"
       type: 'get'
       dataType: 'jsonp'
       crossDomain: true
       success: (data) ->
         dataset = data.data
+        window.dataset = dataset
         puts dataset
+        tallest = 0
+        tallest = d.size if d.size > tallest for d in dataset
+        height_ratio = h / tallest
         svg.selectAll("rect")
            .data(dataset)
            .enter()
            .append("rect")
            .attr("x", (d, i) -> (w / dataset.length) * i)
-           .attr("y", (d, i) -> h - d.size)
+           .attr("y", (d, i) -> h - d.size / height_ratio)
            .attr("width", (w / dataset.length) - 3)
-           .attr("height", (d, i) -> d.size)
+           .attr("height", (d, i) -> d.size / height_ratio)
            .attr("fill", "teal")
