@@ -1,7 +1,12 @@
-div.bar {
-  display: inline-block;
-  width: 20px;
-  height: 75px;
-  background-color: teal;
-  margin-right: 2px;
+body {
+  width: 400px;
+  margin: 0 auto;
 }
+
+.github_username {
+  display: block;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: dashed black 1px;
+}
+
