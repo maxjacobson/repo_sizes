@@ -16,15 +16,15 @@ $ ->
       dataType: 'jsonp'
       crossDomain: true
       success: (data) ->
-        $(".graph_title").text "#{username}'s repos sizes"
+        dataset = data.data
+        window.dataset = dataset
+        puts dataset
+        $(".graph_title").text "#{username}'s #{dataset.length} repos sizes"
         $("svg").remove()
         svg = d3.select("body")
               .append("svg")
               .attr("height", h)
               .attr("width", w)
-        dataset = data.data
-        window.dataset = dataset
-        puts dataset
         tallest = 0
         for d in dataset
           tallest = d.size if d.size > tallest

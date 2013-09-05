@@ -28,12 +28,12 @@
         crossDomain: true,
         success: function(data) {
           var d, dataset, height_ratio, svg, tallest, _i, _len;
-          $(".graph_title").text("" + username + "'s repos sizes");
-          $("svg").remove();
-          svg = d3.select("body").append("svg").attr("height", h).attr("width", w);
           dataset = data.data;
           window.dataset = dataset;
           puts(dataset);
+          $(".graph_title").text("" + username + "'s " + dataset.length + " repos sizes");
+          $("svg").remove();
+          svg = d3.select("body").append("svg").attr("height", h).attr("width", w);
           tallest = 0;
           for (_i = 0, _len = dataset.length; _i < _len; _i++) {
             d = dataset[_i];
