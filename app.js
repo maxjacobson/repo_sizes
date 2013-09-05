@@ -11,10 +11,9 @@
   };
 
   $(function() {
-    var $github_username, $github_username_input, h, svg, w;
+    var $github_username, $github_username_input, h, w;
     h = 500;
     w = 500;
-    svg = d3.select("body").append("svg").attr("height", h).attr("width", w);
     $github_username = $(".github_username");
     $github_username_input = $github_username.find("input");
     return $github_username.on("submit", function(event) {
@@ -28,7 +27,10 @@
         dataType: 'jsonp',
         crossDomain: true,
         success: function(data) {
-          var d, dataset, height_ratio, tallest, _i, _len;
+          var d, dataset, height_ratio, svg, tallest, _i, _len;
+          $(".graph_title").text("" + username + "'s repos sizes");
+          $("svg").remove();
+          svg = d3.select("body").append("svg").attr("height", h).attr("width", w);
           dataset = data.data;
           window.dataset = dataset;
           puts(dataset);

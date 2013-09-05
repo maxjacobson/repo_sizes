@@ -4,10 +4,6 @@ puts      = (output)      -> console.log output
 $ ->
   h = 500
   w = 500
-  svg = d3.select("body")
-          .append("svg")
-          .attr("height", h)
-          .attr("width", w)
   $github_username = $(".github_username")
   $github_username_input = $github_username.find("input")
   $github_username.on "submit", (event) ->
@@ -20,6 +16,12 @@ $ ->
       dataType: 'jsonp'
       crossDomain: true
       success: (data) ->
+        $(".graph_title").text "#{username}'s repos sizes"
+        $("svg").remove()
+        svg = d3.select("body")
+              .append("svg")
+              .attr("height", h)
+              .attr("width", w)
         dataset = data.data
         window.dataset = dataset
         puts dataset
