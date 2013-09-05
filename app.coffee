@@ -28,7 +28,8 @@ d3.select("body")
   .enter()
   .append("div")
   .attr("class", "bar")
-  .style "height", (d) -> "#{(parseInt d) * 5}px"
+  .style("height", (d) -> "#{(parseInt d) * 5}px")
+  .style("background-color", (d) -> if d > 25 then "red" else "teal")
 
 d3.select("body").append "hr"
 
@@ -49,3 +50,31 @@ circles.attr("cx", (d, i) -> (i * 50) + h/2)
        .attr("cy", h/3)
        .attr("r", (d) -> d / 2)
        .attr("fill", (d) -> if d > 25 then "red" else "teal")
+
+d3.select("body").append "hr"
+
+w = 500
+h = 100
+
+svg = d3.select("body")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h)
+
+svg.selectAll("rect")
+   .data(dataset)
+   .enter()
+   .append("rect")
+   .attr("x", (d, i) -> i * 21)
+   .attr("y", (d, i) -> h - d)
+   .attr("width", 20)
+   .attr("height", (d, i) -> d)
+   .attr("fill", (d, i) -> if d > 25 then "red" else "teal")
+
+
+
+
+
+
+
+
