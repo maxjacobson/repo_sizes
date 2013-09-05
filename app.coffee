@@ -20,5 +20,5 @@ d3.select("body")
   .enter()
   .append("div")
   .attr("class", "bar")
-  .style "height", (d) -> "#{parseInt d}px"
+  .style "height", (d) -> "#{(parseInt d) * 5}px"
 
