@@ -27,6 +27,7 @@ $ ->
         tallest = 0
         for d in dataset
           tallest = d.size if d.size > tallest
+        # end for
         window.tallest = tallest
         height_ratio = h / tallest
         svg.selectAll("rect")
@@ -38,3 +39,9 @@ $ ->
            .attr("width", (w / dataset.length) - 3)
            .attr("height", (d, i) -> d.size * height_ratio)
            .attr("fill", "teal")
+           .on("mouseover", (d) ->
+              d3.select(this).style("fill", "black")
+              $(".bar_title").text "repo '#{d.name}' has size #{d.size}"
+            ).on("mouseout", ->
+              d3.select(this).style("fill", "teal")
+            )

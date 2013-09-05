@@ -45,7 +45,12 @@
             return h - d.size * height_ratio;
           }).attr("width", (w / dataset.length) - 3).attr("height", function(d, i) {
             return d.size * height_ratio;
-          }).attr("fill", "teal");
+          }).attr("fill", "teal").on("mouseover", function(d) {
+            d3.select(this).style("fill", "black");
+            return $(".bar_title").text("repo '" + d.name + "' has size " + d.size);
+          }).on("mouseout", function() {
+            return d3.select(this).style("fill", "teal");
+          });
         }
       });
     });
