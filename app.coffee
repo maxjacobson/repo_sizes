@@ -1,4 +1,3 @@
-randomNum = (upper_limit) -> Math.floor (Math.random() * upper_limit) + 1
 puts      = (output)      -> console.log output
 
 $ ->
