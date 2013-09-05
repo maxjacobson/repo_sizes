@@ -28,29 +28,25 @@
         dataType: 'jsonp',
         crossDomain: true,
         success: function(data) {
-          var d, dataset, height_ratio, tallest;
+          var d, dataset, height_ratio, tallest, _i, _len;
           dataset = data.data;
           window.dataset = dataset;
           puts(dataset);
           tallest = 0;
-          if ((function() {
-            var _i, _len, _results;
-            _results = [];
-            for (_i = 0, _len = dataset.length; _i < _len; _i++) {
-              d = dataset[_i];
-              _results.push(d.size > tallest);
+          for (_i = 0, _len = dataset.length; _i < _len; _i++) {
+            d = dataset[_i];
+            if (d.size > tallest) {
+              tallest = d.size;
             }
-            return _results;
-          })()) {
-            tallest = d.size;
           }
+          window.tallest = tallest;
           height_ratio = h / tallest;
           return svg.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
             return (w / dataset.length) * i;
           }).attr("y", function(d, i) {
-            return h - d.size / height_ratio;
+            return h - d.size * height_ratio;
           }).attr("width", (w / dataset.length) - 3).attr("height", function(d, i) {
-            return d.size / height_ratio;
+            return d.size * height_ratio;
           }).attr("fill", "teal");
         }
       });

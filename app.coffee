@@ -24,14 +24,16 @@ $ ->
         window.dataset = dataset
         puts dataset
         tallest = 0
-        tallest = d.size if d.size > tallest for d in dataset
+        for d in dataset
+          tallest = d.size if d.size > tallest
+        window.tallest = tallest
         height_ratio = h / tallest
         svg.selectAll("rect")
            .data(dataset)
            .enter()
            .append("rect")
            .attr("x", (d, i) -> (w / dataset.length) * i)
-           .attr("y", (d, i) -> h - d.size / height_ratio)
+           .attr("y", (d, i) -> h - d.size * height_ratio)
            .attr("width", (w / dataset.length) - 3)
-           .attr("height", (d, i) -> d.size / height_ratio)
+           .attr("height", (d, i) -> d.size * height_ratio)
            .attr("fill", "teal")
