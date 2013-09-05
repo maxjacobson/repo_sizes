@@ -12,7 +12,7 @@
 
   dataset = [];
 
-  for (n = _i = 0; _i <= 20; n = ++_i) {
+  for (n = _i = 0; _i <= 15; n = ++_i) {
     dataset[n] = randomNum(50);
   }
 
@@ -32,7 +32,7 @@
     if (d > 25) {
       return "red";
     } else {
-      return "black";
+      return "teal";
     }
   });
 
@@ -46,16 +46,22 @@
 
   w = 1000;
 
-  h = 250;
+  h = 100;
 
   svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
 
   circles = svg.selectAll("circle").data(dataset).enter().append("circle");
 
   circles.attr("cx", function(d, i) {
-    return (i * 50) + 25;
-  }).attr("cy", h / 2).attr("r", function(d) {
-    return d;
+    return (i * 50) + h / 2;
+  }).attr("cy", h / 3).attr("r", function(d) {
+    return d / 2;
+  }).attr("fill", function(d) {
+    if (d > 25) {
+      return "red";
+    } else {
+      return "teal";
+    }
   });
 
 }).call(this);
