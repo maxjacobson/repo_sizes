@@ -67,7 +67,7 @@ svg.selectAll("rect")
    .append("rect")
    .attr("x", (d, i) -> (w / dataset.length) * i)
    .attr("y", (d, i) -> h - d)
-   .attr("width", 20)
+   .attr("width", (w / dataset.length) - 3)
    .attr("height", (d, i) -> d)
    .attr("fill", (d, i) -> if d > 25 then "red" else "teal")
 

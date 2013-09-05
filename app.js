@@ -82,7 +82,7 @@
     return (w / dataset.length) * i;
   }).attr("y", function(d, i) {
     return h - d;
-  }).attr("width", 20).attr("height", function(d, i) {
+  }).attr("width", (w / dataset.length) - 3).attr("height", function(d, i) {
     return d;
   }).attr("fill", function(d, i) {
     if (d > 25) {
