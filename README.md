@@ -1,3 +1,3 @@
 # max learn d3
 
-`cofee -cw .`
+`cofee -cw js`
