@@ -8,6 +8,7 @@ $ ->
     event.preventDefault()
     username = $github_username_input.val()
     setUsername(username)
+    $(".bar_title").text ""
     $.ajax
       url: "https://api.github.com/users/#{username}/repos"
       type: 'get'
