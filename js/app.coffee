@@ -18,7 +18,7 @@ $ ->
         dataset = data.data
         $(".graph_title").text "#{username}'s #{dataset.length} repos sizes"
         $("svg").remove()
-        svg = d3.select("body")
+        svg = d3.select(".graph")
               .append("svg")
               .attr("height", h)
               .attr("width", w)

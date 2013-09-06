@@ -22,7 +22,7 @@
           dataset = data.data;
           $(".graph_title").text("" + username + "'s " + dataset.length + " repos sizes");
           $("svg").remove();
-          svg = d3.select("body").append("svg").attr("height", h).attr("width", w);
+          svg = d3.select(".graph").append("svg").attr("height", h).attr("width", w);
           tallest = 0;
           for (_i = 0, _len = dataset.length; _i < _len; _i++) {
             d = dataset[_i];
