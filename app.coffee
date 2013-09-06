@@ -1,4 +1,4 @@
-puts      = (output)      -> console.log output
+puts = (output) -> console.log output
 
 $ ->
   h = 500
