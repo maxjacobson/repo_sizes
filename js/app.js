@@ -19,8 +19,6 @@
         success: function(data) {
           var d, dataset, height_ratio, svg, tallest, _i, _len;
           dataset = data.data;
-          window.dataset = dataset;
-          puts(dataset);
           $(".graph_title").text("" + username + "'s " + dataset.length + " repos sizes");
           $("svg").remove();
           svg = d3.select("body").append("svg").attr("height", h).attr("width", w);
@@ -31,7 +29,6 @@
               tallest = d.size;
             }
           }
-          window.tallest = tallest;
           height_ratio = h / tallest;
           return svg.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
             return (w / dataset.length) * i;

@@ -15,8 +15,6 @@ $ ->
       crossDomain: true
       success: (data) ->
         dataset = data.data
-        window.dataset = dataset
-        puts dataset
         $(".graph_title").text "#{username}'s #{dataset.length} repos sizes"
         $("svg").remove()
         svg = d3.select("body")
@@ -28,7 +26,6 @@ $ ->
         for d in dataset
           tallest = d.size if d.size > tallest
         # end for
-        window.tallest = tallest
         height_ratio = h / tallest
         svg.selectAll("rect")
            .data(dataset)
