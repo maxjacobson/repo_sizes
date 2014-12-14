@@ -1,4 +1,7 @@
 # max learn d3
 
-`cofee -cw js`
+## setup
+
+* `gem install jekyll`
+* `jekyll serve`
 
